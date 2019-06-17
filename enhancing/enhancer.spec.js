@@ -7,56 +7,56 @@ describe('enhancer.js', () => {
       const item = { durability: 0 };
       expect(enhancer.repair(item).durability).toBe(100);
     });
+  });
 
-    describe('succeed()', () => {
-      it('should increase enhancement by 1 if the enhancement level is less than 20', () => {
-        const item = { enhancement: 10 };
-        expect(enhancer.succeed(item).enhancement).toBe(11);
-      });
-
-      it('should not increase enhancement if enhancement level is 20', () => {
-        const item = { enhancement: 20 };
-        expect(enhancer.succeed(item).enhancement).toBe(20);
-      });
-
-      it('should not change durability', () => {
-        const item = { enhancement: 15, durability: 80 };
-        expect(enhancer.succeed(item).durability).toBe(80);
-      });
+  describe('succeed()', () => {
+    it('should increase enhancement by 1 if the enhancement level is less than 20', () => {
+      const item = { enhancement: 10 };
+      expect(enhancer.succeed(item).enhancement).toBe(11);
     });
 
-    describe('fail()', () => {
-      it('should decrease durability by 5 if enhancement is less than 15', () => {
-        const item = { enhancement: 10, durability: 80 };
-        expect(enhancer.fail(item).durability).toBe(75);
-      });
-
-      it('should decrease durability by 10 if enhancement is 15 or more', () => {
-        const item = { enhancement: 16, durability: 90 };
-        expect(enhancer.fail(item).durability).toBe(80);
-      });
-
-      it('should decrease enhancement by 1 if enhancement is greater than 16', () => {
-        const item = { enhancement: 18 };
-        expect(enhancer.fail(item).enhancement).toBe(17);
-      });
-
-      it('should not decrease durability to less than 0', () => {
-        const item = { durability: 5, enhancement: 20 };
-        expect(enhancer.fail(item).durability).toBe(0);
-      });
+    it('should not increase enhancement if enhancement level is 20', () => {
+      const item = { enhancement: 20 };
+      expect(enhancer.succeed(item).enhancement).toBe(20);
     });
 
-    describe('get()', () => {
-      it('should modify the name appropriately if enhancement level is greater than 0', () => {
-        const item = { name: 'Iron Sword', enhancement: 7 };
-        expect(enhancer.get(item).name).toBe('[+7] Iron Sword');
-      });
+    it('should not change durability', () => {
+      const item = { enhancement: 15, durability: 80 };
+      expect(enhancer.succeed(item).durability).toBe(80);
+    });
+  });
 
-      it('should not modify the name if the enhancement level is 0', () => {
-        const item = { name: 'Iron Sword', enhancement: 0 };
-        expect(enhancer.get(item).name).toBe('Iron Sword');
-      });
+  describe('fail()', () => {
+    it('should decrease durability by 5 if enhancement is less than 15', () => {
+      const item = { enhancement: 10, durability: 80 };
+      expect(enhancer.fail(item).durability).toBe(75);
+    });
+
+    it('should decrease durability by 10 if enhancement is 15 or more', () => {
+      const item = { enhancement: 16, durability: 90 };
+      expect(enhancer.fail(item).durability).toBe(80);
+    });
+
+    it('should decrease enhancement by 1 if enhancement is greater than 16', () => {
+      const item = { enhancement: 18 };
+      expect(enhancer.fail(item).enhancement).toBe(17);
+    });
+
+    it('should not decrease durability to less than 0', () => {
+      const item = { durability: 5, enhancement: 20 };
+      expect(enhancer.fail(item).durability).toBe(0);
+    });
+  });
+
+  describe('get()', () => {
+    it('should modify the name appropriately if enhancement level is greater than 0', () => {
+      const item = { name: 'Iron Sword', enhancement: 7 };
+      expect(enhancer.get(item).name).toBe('[+7] Iron Sword');
+    });
+
+    it('should not modify the name if the enhancement level is 0', () => {
+      const item = { name: 'Iron Sword', enhancement: 0 };
+      expect(enhancer.get(item).name).toBe('Iron Sword');
     });
   });
 });
