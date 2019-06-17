@@ -1,0 +1,14 @@
+{
+  "name": "webtesting-i-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": "https://github.com/jonyonson/webtesting-i-challenge.git",
+  "author": "Jonathan Taylor <jonyonson@icloud.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
