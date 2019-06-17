@@ -46,5 +46,17 @@ describe('enhancer.js', () => {
         expect(enhancer.fail(item).durability).toBe(0);
       });
     });
+
+    describe('get()', () => {
+      it('should modify the name appropriately if enhancement level is greater than 0', () => {
+        const item = { name: 'Iron Sword', enhancement: 7 };
+        expect(enhancer.get(item).name).toBe('[+7] Iron Sword');
+      });
+
+      it('should not modify the name if the enhancement level is 0', () => {
+        const item = { name: 'Iron Sword', enhancement: 0 };
+        expect(enhancer.get(item).name).toBe('Iron Sword');
+      });
+    });
   });
 });
